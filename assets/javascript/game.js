@@ -5,9 +5,28 @@ var losses = 0;
 var guessesLeft = 9;
 var guessedSoFar = [];
 
-// choose random letter from array and log it in console
-var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-console.log('ComputerGuess', computerGuess);
+function newRand() {
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log('ComputerGuess', computerGuess);
+    return;
+}
+
+// function to reset variables when game ends
+function reset() {
+    guessesLeft = 9;
+    guessedSoFar = [];
+
+    document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guessesLeft;
+    document.querySelector("#guessedSoFar").innerHTML = "Guessed so far: " + guessedSoFar;
+    return;
+}
+
+function updateSoFar() {
+    document.querySelector('#guessedSoFar').innerHTML = "Your guesses so far: " + guessedSoFar + ', ';
+    return;
+};
+
+newRand();
 
 // This function is run whenever the user presses a key
 document.onkeyup = function (event) {
@@ -21,6 +40,8 @@ document.onkeyup = function (event) {
         return false;
     }
     guessesLeft--; // reduce remaining guesses by 1
+    document.querySelector("#guessesLeft").innerHTML = "Guesses left: " + guessesLeft;
+    guessedSoFar.push(userGuess); // add chosen letter to guessed So Far
 
     // determine if there are still guesses available
     if (guessesLeft > 0) {
@@ -28,13 +49,17 @@ document.onkeyup = function (event) {
             wins++;
             document.querySelector("#wins").innerHTML = "Wins: " + wins;
             alert("You must be psychic!");
+            reset();
+            newRand();
         } else {
-            losses++;
             document.querySelector("#losses").innerHTML = "Losses: " + losses + "";
-            alert("Bummer... your psychic mojo is lacking");
+            alert("That wasn't it... try again.");
         }
-
+        updateSoFar();
     } else { // no more guesses, game over
-        alert("game over");
+        losses++;
+        alert("Bummer... your psychic mojo is lacking");
+        reset();
+        newRand();
     }
 }
