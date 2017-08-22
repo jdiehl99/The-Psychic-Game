@@ -22,9 +22,10 @@ function reset() {
 }
 
 function updateSoFar() {
-    document.querySelector('#guessedSoFar').innerHTML = "Your guesses so far: " + guessedSoFar + ', ';
+    document.querySelector('#guessedSoFar').innerHTML = "Guessed so far: " + guessedSoFar + ', ';
     return;
 };
+
 
 newRand();
 
@@ -52,12 +53,12 @@ document.onkeyup = function (event) {
             reset();
             newRand();
         } else {
-            document.querySelector("#losses").innerHTML = "Losses: " + losses + "";
             alert("That wasn't it... try again.");
+            updateSoFar();
         }
-        updateSoFar();
     } else { // no more guesses, game over
         losses++;
+        document.querySelector("#losses").innerHTML = "Losses: " + losses + "";
         alert("Bummer... your psychic mojo is lacking");
         reset();
         newRand();

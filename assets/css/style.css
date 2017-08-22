@@ -1,0 +1,22 @@
+body {
+    background-image: url("../images/crystalball.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+}
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    padding-bottom: 10px;
+    color: #E3ABF6;
+    text-align: center;
+    font-family: 'Fredericka the Great', cursive;
+}
+p {
+    padding-bottom: 10px;
+}
+.container {
+    padding: 20px;
+}
