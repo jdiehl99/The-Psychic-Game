@@ -32,7 +32,7 @@ newRand();
 // This function is run whenever the user presses a key
 document.onkeyup = function (event) {
     // Determines which key was pressed and logs it
-    var userGuess = event.key.toLowerCase();;
+    var userGuess = event.key.toLowerCase();
     console.log('UserGuess', userGuess);
 
     // test a letter was selected, not another keyboard input
